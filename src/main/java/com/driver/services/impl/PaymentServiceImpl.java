@@ -10,6 +10,8 @@ import com.driver.services.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class PaymentServiceImpl implements PaymentService {
     @Autowired
@@ -20,7 +22,8 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public Payment pay(Integer reservationId, int amountSent, String mode) throws Exception {
 
-        Reservation reservation = reservationRepository2.findById(reservationId.get());
+        Optional<Reservation> reservation1 = reservationRepository2.findById(reservationId);
+        Reservation reservation = reservation1.get();
         Spot spot = reservation.getSpot();
         int bill = reservation.getNumberOfHours()*spot.getPricePerHour();
         Payment payment = new Payment();

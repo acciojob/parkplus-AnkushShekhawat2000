@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ParkingLotServiceImpl implements ParkingLotService {
@@ -71,7 +72,8 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
     @Override
     public Spot updateSpot(int parkingLotId, int spotId, int pricePerHour) {
-        ParkingLot parkingLot = parkingLotRepository1.findById((parkingLotId).get());
+        Optional<ParkingLot> parkingLot1 = parkingLotRepository1.findById(parkingLotId);
+        ParkingLot parkingLot = parkingLot1.get();
         List<Spot> spotList = parkingLot.getSpotList();
 
         // all spots in this parking lot in spotList
@@ -83,7 +85,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
             if(spot.getId() == spotId)
             {
                 spot.setPricePerHour(pricePerHour);
-                toBeChanged = spotRepository1.save(parkingLot);
+                toBeChanged = spotRepository1.save(spot);
             }
             newSpotList.add(spot);
         }

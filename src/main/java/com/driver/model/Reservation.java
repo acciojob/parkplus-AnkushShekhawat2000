@@ -62,6 +62,9 @@ public class Reservation {
         this.payment = payment;
     }
 
+    public Reservation() {
+    }
+
     public Reservation(int id, int numberOfHours, Spot spot, User user, Payment payment) {
         this.id = id;
         this.numberOfHours = numberOfHours;

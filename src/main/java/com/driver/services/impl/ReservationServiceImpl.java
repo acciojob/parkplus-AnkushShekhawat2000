@@ -92,9 +92,10 @@ public class ReservationServiceImpl implements ReservationService {
          optimalSpot.setReservationList(reservationList);
          userRepository3.save(user);
          spotRepository3.save(optimalSpot);
+
          return reservation;
 
 
-        return reservation;
+
     }
 }

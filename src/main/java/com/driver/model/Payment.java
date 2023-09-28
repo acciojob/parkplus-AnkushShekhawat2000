@@ -51,6 +51,9 @@ public class Payment {
         this.reservation = reservation;
     }
 
+    public Payment() {
+    }
+
     public Payment(int id, Boolean paymentCompleted, PaymentMode paymentMode, Reservation reservation) {
         this.id = id;
         this.paymentCompleted = paymentCompleted;
